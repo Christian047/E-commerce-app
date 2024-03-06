@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+
+    <!-- Page header with logo and tagline-->
+    <header class="py-4 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-0">
+                <h1 class="fw-bolder">Welcome to Ecom Blog!</h1>
+                <p class="lead mb-0">Category page</p>
+            </div>
+        </div>
+    </header>
+
+    {% comment %} {{catlist}} {% endcomment %}
+
+    <!-- Page content-->
+    {% if not category_by_post %}
+        <div class="container py-5">
+            <div class="text-center my-5 text-danger">
+                <p class="lead mb-0" style="font-weight: bold;">Ooops! You do not have any posts approved in this category yet. Kindly contact the administrator.</p>
+            </div>
+        </div>
+    {% else %}
+    
+       
+                <!-- Blog entries-->
+                {% comment %} <div class="col-lg-8">
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row">
+                        {% for post in category_by_post %}
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    {% comment %} <a href="{% url 'details' post.pk %}"> {% endcomment %}
+                                        {% comment %} <img class="card-img-top" src="{{ post.upload_image.url }}" width="200" height="200" alt="..." />
+                                    </a>
+                                    <div class="card-body">
+                                        <h6 class="text-muted fst-italic fw-bold mb-3 mt-4">{{ post.category }}</h6>
+                                        <div class="bigger text-muted">{{ post.date_created|date:"D, d F, Y" }}</div>
+                                        <h2 class="card-title h4">{{ post.title }}</h2>
+                                        <p class="card-text">{{ post.body|slice:":100" }}</p>
+                                        {% comment %} <a class="btn btn-primary" href="{% url 'details' post.pk %}">Read more →</a> {% endcomment %}
+                                    {% comment %} </div>
+                                </div>
+                            </div>
+                        {% endfor %} {% endcomment %} 
+                    {% comment %} </div>
+                </div>  {% endcomment %}
+
+
+                
+                <!-- Display product thumbnails and add to cart buttons -->
+               
+             {% comment %} <div class="col-lg-4"> {% endcomment %}
+           <section class="section" id="products"> 
+        <div class="container">
+            <div class="row">
+            {% for product in category_by_post %}
+                        <div class="col col-lg-4">
+                            <img class="thumbnail" src="{{ product.imageURL }}" alt="{{ product.name }} image" />
+                            <div class="box-element product">
+                                <h6><strong>{{ product.name }}</strong></h6>
+                                <hr />
+                                <div class="row">
+                                    <div class="col mx-0">
+                                        <!-- Update-cart button references the class event that will be handled in the Javascript -->
+                                        <button
+                                            data-product="{{ product.id }}"
+                                            data-action="add"
+                                            class="btn btn-outline-secondary mb-0 add-btn update-cart"
+                                        >+Cart</button>
+                                    </div>
+
+                                    <div class="col">
+                            <a class="btn btn-outline-success mx-0" href="{% url 'eachproduct' product.id %}">View</a>
+                        </div>
+                        <div class="col">
+                            <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
+                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+                </div> 
+            </div>
+        </div>
+    {% endif %}
+
+</section>
+
+</body>
+
+{% endblock content %}
+</html>

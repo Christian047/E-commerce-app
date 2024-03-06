@@ -1,0 +1,189 @@
+{% extends 'main.html' %}
+<br>
+<br><br>
+
+{% load static %}
+
+{% block content %}
+<br>
+<br><br>
+{% if products %}
+    <div class="container mt-5">
+       <h1 class="text-center mb-4">Vendor: {{ vendor.username }}</h1>
+       <h6 class="text-center mb-1">Address: {{ vendor.address }}</h6>
+       
+       <h6 class="text-center mb-4">Joined {{vendor.date_joined| timesince}}</h6>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Vendor Products</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Actions</th> <!-- Add other headers as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td><a href="{% url 'eachproduct' product.id %}">{{ product.name }}</a></td>
+                            <td>N{{ product.price }}</td>
+                            <td>
+                                <button
+                                    data-product="{{ product.id }}"
+                                    data-action="add"
+                                    class="btn btn-outline-secondary add-btn update-cart"
+                                    data-url="{% url 'update_user_order' %}"
+                                >
+                                    +Cart
+                                </button>
+                            </td>
+                            <!-- Add other cells as needed -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Reviews Section -->
+
+
+
+
+{% else %}
+
+This Vendor has no product
+{% endif %}
+
+
+{% comment %} 
+{% if vendor_reviews %}
+    <div class="row text-center m-2">
+        {% for review in vendor_reviews %}
+            <div class="card my-3 col-lg-4">
+                <div class="card-body py-4 mt-2  ">
+                    <div class="media g-mb-30 media-comment">
+                        <div class="media-body">
+                            <h5 class="font-weight-bold">@{{ review.customer.username }}</h5>
+                            <h6 class="font-weight-bold my-3">{{ review.created|timesince }} ago</h6>
+
+                            <!-- Star Ratings -->
+                            <!-- Adjust this based on your needs -->
+                            <ul class="list-unstyled d-flex justify-content-center">
+                                {% for star in review.stars %}
+                                    <li><i class="fas fa-star fa-sm text-info"></i></li>
+                                {% endfor %}
+                                {% if review.rating < 5 %}
+                                    <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                                {% endif %}
+                            </ul>
+
+                            <!-- Review Content -->
+                            <p class="mb-2">
+                                <i class="fas fa-quote-left pe-2"></i>{{ review.content }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %} {% endcomment %}
+<!-- Handle case where there are no reviews -->
+{% if vendor_reviews %}
+    <div class="row text-center m-2">
+        {% for review in vendor_reviews %}
+            <div class="card my-3 col-lg-4">
+                <div class="card-body py-4 mt-2  ">
+                    <div class="media g-mb-30 media-comment">
+                        <div class="media-body">
+                        {% if review.customer.username  %}
+                        
+                            <h5 class="font-weight-bold">{{ review.customer.username }}</h5>
+                               {% else %}
+                               <h5 class="font-weight-bold">Anonymous</h5>
+                        {% endif %}
+                            <h6 class="font-weight-light my-3">{{ review.date_created|timesince }} ago</h6>
+
+                            <!-- Star Ratings -->
+                            <!-- Adjust this based on your needs -->
+                            <!-- <ul class="list-unstyled d-flex justify-content-center">
+                                {% for star in review.stars %}
+                                    <li><i class="fas fa-star fa-sm text-info"></i></li>
+                                {% endfor %}
+                                {% if review.rating < 5 %}
+                                    <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                                {% endif %}
+                            </ul> -->
+ <ul class="list-unstyled d-flex justify-content-center">
+
+ 
+
+                {% for star in review.stars %}
+                    <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                {% endfor %}
+                {% if review.rating < 1 %}
+                    <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                {% endif %}
+            </ul>
+    
+      <!-- Review Content -->
+                            <p class="mb-2">
+                                <i class="fas fa-quote-left pe-2"></i>{{ review.content }}
+                            </p>
+                        </div>
+
+                  
+                    </div>
+
+
+                   
+                    {% if request.user == review.customer.user %}
+                    
+                  <div class="row">
+                            <div class="col"><button class="btn btn-outline-secondary"> <a href="{% url 'update_review' review.pk%}"> Edit</a>  </button></div>
+                            <div class="col"><button class="btn btn-outline-secondary"> <a href="{% url 'delete_review' review.pk%}"> Delete</a>  </button></div>
+                           
+                            
+                     </div></p>
+
+                     {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+            {% else %}
+       
+
+
+                <!-- No Reviews Message -->
+              
+                
+                    <div class="d-flex align-items-center justify-content-center">
+                        <p>No review for this vendor</p>
+                    </div>
+               
+            {% endif %}
+
+            
+                 <!-- Testimonials Section -->
+        <section style="color: #000; background-color: #ffffff;">
+            <!-- Your testimonials section goes here -->
+            <!-- ... -->
+
+            <!-- Add Review Link -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <a href="{% url 'add_vendor_review' vendor_id=vendor.id %}">
+    <li class="breadcrumb-item active" aria-current="page">Add Review</li>
+</a>
+
+                </ol>
+            </nav>
+        </section>
+    
+       
+    </div>
+{% endblock content %}

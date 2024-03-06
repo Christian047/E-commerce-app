@@ -1,0 +1,93 @@
+ {% extends 'main.html' %}
+{% comment %} {% extends 'main.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center py-md-5 py-3" style="min-height: 90vh;">
+      <h4>Make payment for: N{{ payment.amount }}</h4>
+      <!-- <form action=". " method="POST"> -->
+        <hr>
+        {% csrf_token %}
+        {{ payment_form }}
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <p>
+          <button class="btn btn-large btn-secondary" onclick="payWithPayStack()" id='django-paystack-button'>Make payment</button>
+        </p>
+      <!-- </form> -->
+    </div>
+  </div>
+
+  <script>
+    function payWithPayStack() {
+      let currency = 'NGN';
+      let plan = "";
+      let ref = "{{ payment.ref }}"
+      let obj = {
+        key: "{{ paystack_public_key }}",
+        email: '{{ payment.email }}',
+        amount: '{{ payment.amount_value }}',
+        ref: ref,
+        callback: function(response) {
+          window.location.href = "{% url 'verify-payment' payment.ref %}";
+        }
+      }
+
+      if (Boolean(currency)) {
+        obj.currency = currency.toUpperCase()
+      }
+      if (Boolean(plan)) {
+        obj.plan = plan;
+      }
+
+      var handler = PaystackPop.setup(obj);
+      handler.openIframe();
+    }
+  </script>
+{% endblock %} {% endcomment %}
+
+
+{% comment %} {% extends 'main.html' %} {% endcomment %}
+
+{% block content %}
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center py-md-4 py-2" style="min-height: 90vh;">
+      <h4>Make payment for: N{{ payment.amount }}  </h4>
+      {% comment %} <form action=". " method="POST"> {% endcomment %}
+        <hr>
+        {% csrf_token %}
+        {{ payment_form }}
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <p>
+          <button class="btn btn-lg btn-success mx-2" onclick="payWithPayStack()" id="django-paystack-button">Make Payment</button>
+        </p>
+      {% comment %} </form> {% endcomment %}
+    </div>
+  </div>
+
+  <script>
+    function payWithPayStack() {
+      let currency = 'NGN';
+      let plan = "";
+      let ref = "{{ payment.ref }}"
+      let obj = {
+        key: "{{ paystack_public_key }}",
+        email: '{{ payment.email }}',
+        amount: '{{ payment.amount_value }}',
+        ref: ref,
+        callback: function(response) {
+          window.location.href = "{% url 'verify-payment' payment.ref %}";
+        }
+      }
+
+      if (Boolean(currency)) {
+        obj.currency = currency.toUpperCase()
+      }
+      if (Boolean(plan)) {
+        obj.plan = plan;
+      }
+
+      var handler = PaystackPop.setup(obj);
+      handler.openIframe();
+    }
+  </script>
+{% endblock %}

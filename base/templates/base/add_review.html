@@ -1,0 +1,131 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<br>
+<br>
+
+{% if page == 'add_review' %}
+
+
+    <div class="bg-gradient-primary">
+        <div class="container">
+            <div class="card o-hidden border-0 shadow-lg my-5 mx-auto" style="width: 95%;">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 text-center">
+                            <h2 class="mb-4">Add a Review for {{ product.name }}</h2>
+
+                            <form method="post" action="{% url 'add_review' product_id=product.id %}" class="needs-validation" novalidate>
+                                {% csrf_token %}
+
+                                <div class="mb-3">
+                                    <label for="{{ form.content.id_for_label }}" class="form-label">Your Review:</label>
+                                    {{ form.content }}
+                                    <div class="invalid-feedback">
+                                        Please provide your review.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="{{ form.rating.id_for_label }}" class="form-label">Rating:</label>
+                                    {{ form.rating }}
+                                    <div class="invalid-feedback">
+                                        Please provide a rating.
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            })();
+        </script>
+    </div>
+
+    {% else %}
+        <div class="bg-gradient-primary">
+        <div class="container">
+            <div class="card o-hidden border-0 shadow-lg my-5 mx-auto" style="width: 95%;">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 text-center">
+                            <h2 class="mb-4">Update Review for {{ product.name }}</h2>
+
+                            <form method="post" action="{% url 'update_review' review.pk %}" class="needs-validation" novalidate>
+                                {% csrf_token %}
+
+                                <div class="mb-3">
+                                    <label for="{{ form.content.id_for_label }}" class="form-label">Your Review:</label>
+                                    {{ form.content }}
+                                    <div class="invalid-feedback">
+                                        Please provide your review.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="{{ form.rating.id_for_label }}" class="form-label">Rating:</label>
+                                    {{ form.rating }}
+                                    <div class="invalid-feedback">
+                                        Please provide a rating.
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            })();
+        </script>
+    </div>
+{% endif %}
+{% endblock %}

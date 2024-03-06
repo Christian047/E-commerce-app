@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><br>
+<br><br>
+<br>
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Subscriber Name</th>
+                        <th scope="col">Subscriber Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for suscriber in suscribers %}
+                        <tr>
+                            <td><a href="#">{{ suscriber.name }}</a></td>
+                            <td>{{ suscriber.email }}</td>
+                            <!-- Add other cells as needed -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

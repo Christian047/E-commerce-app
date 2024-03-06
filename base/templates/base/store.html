@@ -1,0 +1,634 @@
+{% extends 'main.html' %} 
+{% load static %} 
+
+{% block content %}
+    
+
+    <!-- ***** Main Banner Area Start ***** -->
+     <div class="container-fluid">
+    <div class="main-banner" id="top">
+    <div class="container-fluid">
+
+
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      {% if request.user.is_authenticated %}
+      Welcome {{ request.user }}
+      {% else %}
+      Welcome Visitor!
+      {% endif %}
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-black text-uppercase mb-1">
+                                           
+                                                {% comment %} <a href="{% url 'income-list' %}">Your Income</a> {% endcomment %}
+
+                                                <a href="#">Wallet</a></div>
+
+<div class="row">
+{% if user_wallet  %}
+<div class="h5 mb-0 font-weight-bold text-gray-800 col">N{{ user_wallet.balance }}</div> 
+{% else %}
+
+<div class="h5 mb-0 font-weight-bold text-gray-800 col">N 0</div> 
+{% endif %}
+    
+
+    <div class="col-auto">
+        <a href="{% url 'initiate-payment' %}" class="btn btn-outline-dark">Add Funds</a>
+    </div>
+</div>
+
+
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Expenses
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                   
+                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">N{{sum_total_expense}}</div>
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Admin Section -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            
+
+                          {% if request.user.is_staff %}
+                          
+                      
+                                           
+                
+    <div class="col-auto">
+        <a href="{% url 'penpage' %}" class="btn btn-outline-dark">Pending Products</a>
+    </div>
+{% endif %} 
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>We Are Hexashop</h4>
+                                <span>Home of Men's Wears and A
+                                
+                                ccessories</span>
+                                <div class="main-border-button">
+                                    <a href="#">Purchase Now!</a>
+                                </div>
+                            </div>
+                           <div style="height: 690px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{% static 'images/f.jpg' %}" alt="">
+                                        </div>
+{% comment %} 
+                            <img src="{% static 'images/f.jpg' %}" alt="" style="height: 690px;"> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Contemporary</h4>
+                                            <span>Best Contemporary <br> For Men</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Contemporary</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% comment %} <img src="{% static 'assets/images/logo.png' %}"> {% endcomment %}
+
+                                    <div style="width: 320px; height: 310px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{% static 'images/q4.jpg' %}"" alt="">
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Men</h4>
+                                            <span>Best Clothes For Men</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Men</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                           <div style="width: 320px; height: 310px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{% static 'images/q5.jpg' %}"" alt="">
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Kids</h4>
+                                            <span>Best Clothes For Kids</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Kids</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div style="width: 320px; height: 310px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{% static 'images/q13.jpg' %}"" alt="">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Accessories</h4>
+                                            <span>Best Trend Accessories</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Accessories</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <div style="width: 320px; height: 310px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{% static 'images/q12.jpg' %}"" alt="">
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Featured Area Starts ***** -->
+<section class="section" id="men">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Featured Products</h2>
+                    <span>Discover our handpicked selection of featured products.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                        {% for product in Featured  %}
+                            <div class="item">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="width: 360px; height: 360px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                        </div>
+                                        <div class="down-content">
+                                            <div class="row">
+                                                <div class="col"> <h4>{{ product.name }}</h4></div>
+
+                                                <div class="col text-end">  <div class="hover-content col">
+                                                <div class="icons-row">
+                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark"><i class="fa fa-eye"></i></a>
+                                                    <a href="single-product.html" class="icon-link text-dark"><i class="fa fa-star"></i></a>
+                                                    <a
+                                                        data-product="{{ product.id }}"
+                                                        data-action="add"
+                                                        class="add-btn update-cart icon-link text-dark"
+                                                    >
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </div>
+                                            </div></div>
+                                        
+                                        </div>
+                                            <span>N{{ product.price }}</span>
+                                         
+                                           
+
+<div class="row">
+                                        
+
+ {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
+                        <div class="col mx-0">
+                            <span>  
+                                <a class="btn btn-outline-secondary mx-0 mb-2" href="{% url 'update_product' product.id %}">Edit</a>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </span>
+                        </div>
+                    {% endif %}
+
+                            <div class="col mx-0"> <span>                     
+                            {% if request.user.is_staff %}
+                        <div class="col mx-0">
+                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                            </form>
+                        </div>
+                    {% endif %}
+     </span>  
+     </div>
+
+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- ***** Men Area Ends ***** -->
+
+
+
+     <!-- ***** Latest Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Latest Products</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+
+{% for product in approved_products %}
+    <div class="col-lg-4">
+        <div class="item">
+            <div class="thumb">
+                <div class="hover-content">
+                    <ul>
+                        <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                        <li>
+                            <a
+                                data-product="{{product.id}}"
+                                data-action="add"
+                                class="add-btn update-cart"
+                            >
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 360px; height: 360px; overflow: hidden;">
+                    <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                </div>
+            </div>
+            <div class="down-content">
+                <h4>{{ product.name }}</h4>
+                <div class="row">
+                    <div class="col mx-0">
+                        <span> N{{ product.price }}</span>
+                    </div>
+                    {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
+                        <div class="col mx-0">
+                            <span>  
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if request.user.is_staff %}
+                        <div class="col mx-0">
+                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+<!-- Display average star rating -->
+
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+
+
+        <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Discount Sales</h2>
+                        <h3 class="span"><i>10% off</i></h3>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                        {% for product in Featured  %}
+                            <div class="item">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="width: 360px; height: 360px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                        </div>
+                                        <div class="down-content">
+                                            <div class="row">
+                                                <div class="col"> <h4>{{ product.name }}</h4></div>
+
+                                                <div class="col text-end">  <div class="hover-content col">
+                                                <div class="icons-row">
+                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark"><i class="fa fa-eye"></i></a>
+                                                    <a href="single-product.html" class="icon-link text-dark"><i class="fa fa-star"></i></a>
+                                                    <a
+                                                        data-product="{{ product.id }}"
+                                                        data-action="add"
+                                                        class="add-btn update-cart icon-link text-dark"
+                                                    >
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </div>
+                                            </div></div>
+                                        
+                                        </div>
+                                            <span>N{{ product.price }}</span>
+                                         
+                                           
+
+<div class="row">
+                                        
+
+ {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                        <div class="col mx-0">
+                            <span>  
+                                <a class="btn btn-outline-secondary mx-0 mb-2" href="{% url 'update_product' product.id %}">Edit</a>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </span>
+                        </div>
+                    {% endif %}
+
+                            <div class="col mx-0"> <span>                     
+                            {% if request.user.is_staff %}
+                        <div class="col mx-0">
+                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                            </form>
+                        </div>
+                    {% endif %}
+     </span>  
+     </div>
+
+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- ***** Women Area Ends ***** -->
+
+
+  <!-- ***** Subscribe Area Starts ***** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2>By Subscribing To Our Updates You Can Get <span-w class="h2" style="font-weight: bold;color: red;">N1000</span-w> Off your First Purchase</h2>
+                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    </div>
+                    <form id="subscribe" action="{% url 'subscribe' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="name" type="text" id="name" placeholder="Your Name" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-2">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            </fieldset>
+                          </div>
+                        </div>
+                    </form>
+{% if request.user.is_staff %}
+
+
+
+                      <div class="btn btn-outline-dark">
+                            <a href="{% url 'suscribers_list' %}">View Subscribers</a>
+                        </div>{% endif %}
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                <li>Phone:<br><span>010-020-0340</span></li>
+                                <li>Office Location:<br><span>North Miami Beach</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                <li>Email:<br><span>info@company.com</span></li>
+                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Subscribe Area Ends ***** -->
+
+
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Explore Our <i>Swagful</i>  Wears and Accessories</h2>
+                        <span>Our collection boasts a collection of classy and contemporary trends, catering to the modern man who values both tradition and innovation. From well tailored suits that exude professionalism to casual wear, we have your every fashion need covered.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Whether you're preparing for a boardroom meeting, a casual weekend brunch, or a special occasion, our collection offers versatile options to suit every lifestyle.</p>
+                        </div>
+                        <p>Stay ahead of the fashion curve with our regularly updated collection that reflects the latest trends and styles, ensuring you're always at the forefront of style.</p>
+        
+                        <div class="main-border-button">
+                            <a href="products.html">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Men's Wears</h4>
+                                    <span>Latest Collection</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="{% static 'assets/images/explore-image-01.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="{% static 'images/q12.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Over 304 Products</h4>
+                                    <span>Producing on daily basis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+
+  
+    
+{% endblock content %}  

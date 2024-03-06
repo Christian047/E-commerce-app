@@ -1,0 +1,147 @@
+{% extends 'main.html' %} 
+{% load static %} 
+
+{% block content %}
+    <!-- Create a row then include the number of columns you want -->
+<p><h1>Welcome {{ request.user }}</h1></p> 
+<div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                           
+                                                {% comment %} <a href="{% url 'income-list' %}">Your Income</a></div> {% endcomment %}
+
+                                                <a href="#">Wallet</a></div>
+
+<div class="row">
+{% if total_amount  %}
+<div class="h5 mb-0 font-weight-bold text-gray-800 col">N{{ total_amount }}</div> 
+{% else %}
+
+<div class="h5 mb-0 font-weight-bold text-gray-800 col">N 0</div> 
+{% endif %}
+    
+
+    <div class="col-auto">
+        <a href="{% url 'initiate-payment' %}" class="btn btn-outline-primary">Add Funds</a>
+    </div>
+</div>
+
+
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Expenses
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                   
+                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{sum_total_expense}}</div>
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</div>
+
+
+
+
+
+    <div class="row">
+
+
+
+
+    
+        <!-- for loop and replace the styled elements with the values -->
+        <!-- The values are stored in the model variables -->
+        {% comment %} {% if product %} {% endcomment %}
+        {% for product in products %}
+            <!-- lg 4 means that each 12 bounds are divided into 4 places giving room for 3 mini containers -->
+            <div class="col-lg-4">
+                <img class="thumbnail" src="{{ product.imageURL }}" alt="{{ product.name }} image" />
+                <div class="box-element product">
+                    <h6><strong>{{ product.name }}</strong></h6>
+                    <hr />
+
+                    <div class="row">
+                     <div class="col mx-0">
+    <!-- Update-cart button references the class event that will be handled in the Javascript -->
+
+              <button
+            data-product="{{product.id}}"
+            data-action="add"
+            class="btn btn-outline-secondary mb-0 add-btn update-cart"
+            >+Cart</button
+          >
+
+
+</div>
+
+                        <div class="col">
+                            <a class="btn btn-outline-success mx-0" href="{% url 'eachproduct' product.id %}">View</a>
+                        </div>
+                        <div class="col">
+                            <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
+                        </div>
+
+                        
+                    </div>
+
+
+                    {% comment %} <div class="row">
+                    <div class="col">
+                            {% comment %} <a><h5 class="text-end mb-0">{{ product.vendor }}</h5></a> {% endcomment %}
+                        {% comment %} </div>
+                    
+                       <div class="col">
+                            <a class="btn btn-success mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                        </div>
+
+                       <div class="col">
+                            <a class="btn btn-danger mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </div>
+                    </div>  {% endcomment %}
+                    
+                    <br>
+                    {% comment %} <!-- Vendor information comment -->
+                    <!-- <div class="">
+                        <a href="{% url 'vendor' pk=product.vendor.pk %}">
+                            <small>{{ product.vendor }}</small>
+                        </a>
+                    </div> --> {% endcomment %}
+                </div>
+            </div>
+
+            
+        {% endfor %}
+        {% comment %} {% endif %} {% endcomment %}
+    </div>
+{% endblock content %}

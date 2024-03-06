@@ -1,0 +1,196 @@
+{% extends 'main.html' %}
+{% load static %} 
+
+{% block content %}
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>{{ product.name }} Page</h2>
+                        <span>Crafted for Heritage; tailored for today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                <div class="left-images">
+
+<div style="width: auto; height: 420px; overflow: hidden;">
+    <a href="{{ product.imageURL }}" target="_blank">
+        <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+    </a>
+</div>
+           {% comment %} <img src="{{ product.imageURL }}" alt="{{ product.imageURL }} image"> {% endcomment %}
+                   
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right-content">
+                    <h4>{{ product.name }}</h4>
+                    <span class="price">N{{ product.price }}</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    {% if product.description %}
+                    <span>{{ product.description }}</span>
+                    {% else %}
+                    <span> <i>  This Product has no description </i></span>
+                    {% endif %}
+                    
+                   
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6>Vendor:</h6>
+                        </div>
+
+                      <!-- Vendor name  -->
+                        <div class="right-content">
+    {% if product.vendor %}
+        <h6><a href="{% url 'vendor_products' vendor_id=product.vendor.id %}">{{ product.vendor.username }}</a></h6>
+</div>
+
+                        {% else %}
+                        <h6>No Vendor</h6>
+                        {% endif %}
+                        </div>
+                    </div>
+
+<div class="total">
+
+<div >
+<form action="{% url 'like_post' product.pk %}" method="POST">
+    {% csrf_token %}
+
+    {% if user.is_authenticated %}
+        {% if liked %}
+            <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-danger btn-sm">Unlike</button>
+            {{ total_likes }} Likes
+        {% else %}
+            <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-primary btn-sm">Like</button>
+        {% endif %}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> to like
+    {% endif %}
+
+    - {{ total_likes }} likes
+</form>
+</div>
+                     
+
+                        <div 
+                                    data-product="{{ product.id }}"
+                                    data-action="add"
+                                    class="btn btn-outline-secondary add-btn update-cart main-border-button"
+                                    data-url="{% url 'update_user_order' %}"
+                                >
+                                    Add to Cart
+                                </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        
+<div class="text-center mt-3">  <h3 class="fw-bold"> Reviews</h3></div>
+<p><h5 class="text-center">This product has <strong>{{number_of_reviews }}</strong> Reviews</h5> </p>
+
+{% if product_reviews %}
+    <div class="row text-center m-2">
+        {% for review in product_reviews %}
+            <div class="card my-3 col-lg-4">
+                <div class="card-body py-4 mt-2  ">
+                    <div class="media g-mb-30 media-comment">
+                        <div class="media-body">
+                        {% if review.customer.username  %}
+                        
+                            <h5 class="font-weight-bold">{{ review.customer.username }}</h5>
+                               {% else %}
+                               <h5 class="font-weight-bold">Anonymous</h5>
+                        {% endif %}
+                            <h6 class="font-weight-light my-3">{{ review.date_created|timesince }} ago</h6>
+
+                            <!-- Star Ratings -->
+                            <!-- Adjust this based on your needs -->
+                            <!-- <ul class="list-unstyled d-flex justify-content-center">
+                                {% for star in review.stars %}
+                                    <li><i class="fas fa-star fa-sm text-info"></i></li>
+                                {% endfor %}
+                                {% if review.rating < 5 %}
+                                    <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                                {% endif %}
+                            </ul> -->
+ <ul class="list-unstyled d-flex justify-content-center">
+
+ 
+
+                {% for star in review.stars %}
+                    <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                {% endfor %}
+                {% if review.rating < 1 %}
+                    <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                {% endif %}
+            </ul>
+    
+      <!-- Review Content -->
+                            <p class="mb-2">
+                                <i class="fas fa-quote-left pe-2"></i>{{ review.content }}
+                            </p>
+                        </div>
+
+                  
+                    </div>
+
+
+                   
+                    {% if request.user == review.customer.user %}
+                    
+                  <div class="row">
+                            <div class="col"><button class="btn btn-outline-secondary"> <a href="{% url 'update_review' review.pk%}"> Edit</a>  </button></div>
+                            <div class="col"><button class="btn btn-outline-secondary"> <a href="{% url 'delete_review' review.pk%}"> Delete</a>  </button></div>
+                           
+                            
+                     </div></p>
+
+                     {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+            {% endif %}
+       
+
+        <!-- Testimonials Section --> <p> 
+        <section style="color: #000; background-color: #ffffff;" class="mt-3">
+            <!-- Your testimonials section goes here -->
+            <!-- ... -->
+
+            <!-- Add Review Link -->
+          <nav aria-label="breadcrumb mt-3">
+                <ol class="breadcrumb">
+                    <a href="{% url 'add_review' product_id=product.id %}">
+                        <li class="breadcrumb-item active" aria-current="page">Add Review</li>
+                    </a>
+                </ol>
+            </nav>
+        </section></p>
+    
+    
+{% endblock %}

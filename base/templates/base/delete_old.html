@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% comment %} extends from the base template {% endcomment %}
+
+<!-- initialize the template content -->
+{% block content  %}
+<!-- create a delete form and add csrf token -->
+<form action="" method="POST">
+{% csrf_token %}
+
+    <!-- obj is used because that is the variable passed in the context -->
+    <p>Are you sure you want to delete item "{{obj}}"</p>
+
+    <!-- This sends the user back one step -->
+     <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+    <input type="submit" value="Confirm">
+
+</form>
+
+{% endblock  %}

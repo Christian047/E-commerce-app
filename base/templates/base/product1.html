@@ -1,0 +1,245 @@
+{% extends 'main.html' %}
+{% load static %} 
+
+{% block content %}
+   <div class="row">
+        <!-- for loop and replace the styled elements with the values -->
+        <!-- The values are stored in the model variables -->
+        <!-- lg 4 means that each 12 bounds are divided into 4 places giving room for 3 mini containers -->
+        <div class="col-lg-6 mx-auto">
+            <img class="thumbnail" src="{{ product.imageURL }}" alt="{{ product.name }} image" />
+            <div class="box-element product">
+                <h6><strong>{{ product.name }}</strong></h6>
+
+
+              <div class="row">  
+            <div class="col">
+              Vendor
+                {% if product.vendor %}
+                    <a href="{% url 'vendor_products' vendor_id=product.vendor.id %}">
+                        <h5 class="text-end mb-0">{{ product.vendor }}</h5>
+                    </a>
+                {% endif %}
+            </div>
+
+ <div class="col mx-0">
+                <!-- Update-cart button references the class event that will be handled in the Javascript -->
+                Price:
+                <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
+            </div>
+            </div>
+                <hr />
+            </div>
+
+
+        </div>
+
+        {% comment %} <div class="row"> {% endcomment %}
+           
+        {% comment %} </div> {% endcomment %}
+
+        <div class="row">
+            <div class="col"> <!-- This div creates space between Price and Reviews -->
+                &nbsp;
+            </div>
+        </div>
+
+ <p>       <div class="row">
+
+           
+        </div>
+</p>
+        
+       
+        
+        <br>
+        {% comment %} <!-- Vendor information comment -->
+        <!-- <div class="">
+            <a href="{% url 'vendor' pk=product.vendor.pk %}">
+                <small>{{ product.vendor }}</small>
+            </a>
+        </div> --> {% endcomment %}
+    </div>
+
+<section style="color: #000; background-color: #ffffff;">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-xl-8 text-center">
+        <h3 class="fw-bold mb-4">Reviews</h3>
+
+      </div>
+    </div>
+
+<!-- 
+          {% if Product_reviews %}
+    {% for review in Product_reviews %}
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card">
+          <div class="card-body py-4 mt-2">
+
+        <div class="row">
+  
+            <div class="col-lg-12">
+                <div class="media g-mb-30 media-comment">
+                    <div class="media-body">
+                        <h5 class="font-weight-bold">@{{ review.customer.username }}</h5>
+                        <h6 class="font-weight-bold my-3">{{ review.created|timesince }} ago</h6>
+
+                        <!-- Star Ratings -->
+                        <!-- <ul class="list-unstyled d-flex justify-content-center">
+                            {% for star in review.stars %}
+                                <li><i class="fas fa-star fa-sm text-info"></i></li>
+                            {% endfor %}
+                            {% if review.rating < 5 %}
+                                <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+                            {% endif %}
+                        </ul>
+
+                        Review Content -->
+                        <p class="mb-2">
+                            <i class="fas fa-quote-left pe-2"></i>{{ review.content }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+          <button>Edit</button>
+        </div>
+     {% endfor %}
+{% else %}
+    <!-- No Reviews Message -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex align-items-center justify-content-center">
+                <p>No reviews yet</p>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+</div> -->
+
+
+
+<section>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-xl-8 text-center">
+      <h3 class="mb-4">Testimonials</h3>
+      <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+        quisquam eum porro a pariatur veniam.
+      </p>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-4 mb-5 mb-md-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">Maria Smantha</h5>
+      <h6 class="text-primary mb-3">Web Developer</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
+        tenetur.
+      </p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star-half-alt fa-sm text-warning"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 mb-5 mb-md-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">Lisa Cudrow</h5>
+      <h6 class="text-primary mb-3">Graphic Designer</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>Ut enim ad minima veniam, quis nostrum
+        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi.
+      </p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 mb-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">John Smith</h5>
+      <h6 class="text-primary mb-3">Marketing Specialist</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>At vero eos et accusamus et iusto odio
+        dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+      </p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="far fa-star fa-sm text-warning"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Add Review Link -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <a href="{% url 'add_review' product_id=product.id %}">
+            <li class="breadcrumb-item active" aria-current="page">Add Review</li>
+        </a>
+    </ol>
+</nav>
+
+
+
+
+{% endblock %}

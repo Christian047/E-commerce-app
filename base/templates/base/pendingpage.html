@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content  %}
+
+
+<br><br><br>
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Check out the Pending products</h2>
+                        <!-- <span>Check out all of our products.</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% for product in pending_products %}
+                    <div class="col-lg-4">
+                        <div class="item">
+                            <div class="thumb">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                        <li>
+                                            <a
+                                                data-product="{{product.id}}"
+                                                data-action="add"
+                                                class="add-btn update-cart"
+                                            ><i class="fa fa-shopping-cart"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="width: 360px; height: 360px; overflow: hidden;">
+                                    <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>{{ product.name }}</h4>
+                                <div class="row">
+                                    <div class="col mx-0"> <span> N{{ product.price }}</span></div>
+
+                                    {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                                        <div class="col mx-0">
+                                            <span>
+                                                <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="row">
+                                    {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                                        <div class="col mx-0">
+                                            <span>
+                                                <form method="post" action="{% url 'approve_post' pk=product.pk %}">
+                                                    {% csrf_token %}
+                                                    <!-- Your form fields and buttons go here -->
+                                                    <button type="submit" name="approve" class="btn btn-outline-secondary mx-0">Approve</button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+    {% endblock content %}
+</html>
+
+
+
+
+{% comment %} <!DOCTYPE html>
+
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content  %}
+
+
+
+    <!-- ***** Men Area Starts ***** -->
+<section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Latest Products</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+{% for product in pending_products %}
+    <div class="col-lg-4">
+        <div class="item">
+            <div class="thumb">
+                <div class="hover-content">
+                    <ul>
+                        <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                        <li>
+                            <a
+                                data-product="{{product.id}}"
+                                data-action="add"
+                                class="add-btn update-cart"
+                            ><i class="fa fa-shopping-cart"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 360px; height: 360px; overflow: hidden;">
+                    <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                </div>
+            </div>
+            <div class="down-content">
+                <h4>{{ product.name }}</h4>
+
+                <div class="row">
+                    <div class="col mx-0"> <span> N{{ product.price }}</span></div>
+
+                    {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                        <div class="col mx-0">
+                            <span>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+    <div class="col mx-0">
+        <span>
+            <form method="post" action="{% url 'approve_post' pending_product.pk %">
+                {% csrf_token %}
+                <!-- Your form fields and buttons go here -->
+                <button type="submit" name="approve" class="btn btn-outline-secondary mx-0">Approve</button>
+                
+
+                {% comment %} <button type="submit" name="unapprove" class="btn btn-outline-secondary mx-2">Unapprove</button> {% endcomment %}
+            {% comment %} </form>
+        </span>
+    </div>
+{% endif %} {% endcomment %}
+
+            {% comment %} {% for product in pending_products %}
+                <div class="col-lg-4">
+
+
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                        
+                                    <li><a
+            data-product="{{product.id}}"
+            data-action="add"
+            class="add-btn update-cart"
+            ><i class="fa fa-shopping-cart"></i></a
+          ></li>
+                                </ul>
+                            </div>
+                                                               <div style="width: 360px; height: 360px; overflow: hidden;">
+    <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+</div>
+                            <!-- <img src="{{ product.imageURL }}" alt="{{ product.name }} image"> -->
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+
+                            <div class="row">
+                            <div class="col mx-0"> <span> N{{ product.price }}</span></div>
+
+                            {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                            <div class="col mx-0"> <span>  
+        <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+
+        <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+   
+     </span>  </div>
+    {% endif %}
+                            </div>
+                            <div class="row">
+
+                            {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+    <div class="col mx-0">
+        <span>
+            <a class="btn btn-outline-secondary mx-0" href="{% url 'approve_product' pk=product.pk %}">Approve</a>
+
+<form method="post" action="{% url 'base:approve' pk=pending_product.pk %}">
+    {% csrf_token %}
+    <!-- Your form fields and buttons go here -->
+    <button type="submit" name="approve">Approve</button>
+</form>
+
+        </span>
+    </div>
+{% endif %} {% endcomment %}
+
+                            {% comment %} </div>
+
+
+
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                {% endfor %}
+
+
+               
+            </div>
+        </div>
+    </section> {% endcomment %}
+    <!-- ***** Products Area Ends ***** -->
+    {% comment %} {% endblock content %}
+
+</html>
+
+{% comment %} "{% url '/admin/approve-post/{{ post.pk }}/' %}" {% endcomment %}
