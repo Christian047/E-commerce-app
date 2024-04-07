@@ -142,7 +142,7 @@ STATICFILES_DIRS = [
     BASE_DIR /'static']
 
 # tHIS IS THE STORAGE BASE FOR USER UPLOADED IMAGES
-# STATIC_ROOT =
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -153,6 +153,10 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+<<<<<<< HEAD
+=======
+# load_dotenv()
+>>>>>>> 6c3c8392c24c2cc4f930826dcea2ef62d8d6d600
 
 PAYSTACK_SECRET_KEY = '#'
 PAYSTACK_PUBLIC_KEY = '#'
