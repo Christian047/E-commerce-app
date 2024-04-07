@@ -82,7 +82,7 @@ post_status = (
     
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    price = models.IntegerField()
+    price = models.CharField(max_length=200)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     vendor = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True, limit_choices_to={'is_vendor': True})

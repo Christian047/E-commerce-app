@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Animation on Scroll</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    .number-container {
+      overflow: hidden;
+      display: inline-block;
+      height: 1.2em;
+      line-height: 1.2em;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #4a5568;
+    }
+
+    .number {
+      display: block;
+      animation: number-roll 1s ease-in-out forwards;
+    }
+
+    @keyframes number-roll {
+      0% {
+        transform: translateY(200%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+
+<body class="bg-gray-100">
+  <div class="container py-5">
+    <h1 class="text-center mb-5">Number Animation on Scroll</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="bg-white p-4 rounded shadow-sm text-center mb-4">
+          <div class="number-container">
+            <span class="number">305</span>
+          </div>
+          <p class="mt-3">customers visited</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const numberContainer = document.querySelector('.number-container');
+    const numberElement = document.querySelector('.number');
+
+    let isAnimated = false;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isAnimated) {
+          isAnimated = true;
+
+          let currentValue = 1;
+          const targetValue = 305;
+          const duration = 500;
+          const increment = 5;
+
+          const rollAnimation = setInterval(() => {
+            numberElement.textContent = currentValue;
+            currentValue += 1;
+
+            if (currentValue > targetValue) {
+              clearInterval(rollAnimation);
+              numberElement.textContent = targetValue;
+            }
+          }, increment);
+        }
+      });
+    }, { threshold: 1 });
+
+    observer.observe(numberContainer);
+  </script>
+
+  
+</body>
+</html>

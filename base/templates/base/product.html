@@ -70,9 +70,9 @@
                         </div>
                     </div>
 
-<div class="total">
+<div class="row">
 
-<div >
+<div class="col" >
 <form action="{% url 'like_post' product.pk %}" method="POST">
     {% csrf_token %}
 
@@ -84,10 +84,10 @@
             <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-primary btn-sm">Like</button>
         {% endif %}
     {% else %}
-        <a href="{% url 'login' %}">Login</a> to like
+        <div><a href="{% url 'login' %}">Login</a> to like</div>
     {% endif %}
 
-    - {{ total_likes }} likes
+   <h6 class="my-2"> {{ total_likes }} likes</h6>
 </form>
 </div>
                      
@@ -101,6 +101,8 @@
                                     Add to Cart
                                 </div>
                     </div>
+
+                    
                 </div>
             </div>
             </div>

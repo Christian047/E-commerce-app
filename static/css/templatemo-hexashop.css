@@ -44,6 +44,7 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -89,6 +90,9 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#typed-text{font-size: x-large !important; }
+
+
 a {
   text-decoration: none !important;
 }
@@ -129,9 +133,28 @@ body {
   color: #fff;
 }
 
-@media (max-width: 991px) {
+
+
+@media (max-width: 991px)
+
+
+
+
+{
+.header-area .main-nav .nav li:last-child i.fa.fa-shopping-cart {
+        display: inline-block !important;
+    }
+   
+        #cart-total {
+             display: inline-block !important;
+        }
+
+
+
   html, body {
     overflow-x: hidden;
+    text-align: center;
+    margin: 0 1px;
   }
   .mobile-top-fix {
     margin-top: 30px;
@@ -144,6 +167,8 @@ body {
     margin-bottom: 60px;
   }
 }
+
+
 
 .main-border-button a {
   font-size: 13px;
@@ -190,6 +215,7 @@ body {
   font-size: 34px;
   font-weight: 700;
   color: #2a2a2a;
+
 }
 
 .section-heading span {
@@ -528,6 +554,9 @@ header
   color: #aaa;
 }
 
+
+
+
 @media (max-width: 1200px) {
   .header-area .main-nav .nav li {
     padding-left: 12px;
@@ -536,6 +565,27 @@ header
   .header-area .main-nav:before {
     display: none;
   }
+
+  #cart-total1 {
+    /* Your existing styles */
+
+    /* New styles for absolute positioning */
+    position: absolute;
+    top: 120px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+}
+
+
+  .section-heading h2 {
+
+  text-align: center;
+}
+
+.number-container h1{
+  color: red;
+}
+
+
 }
 
 @media (max-width: 767px) {
@@ -608,7 +658,7 @@ header
     position: relative;
     visibility: inherit;
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
     transform: translateY(0%);
     transition-delay: 0s, 0s, 0.3s;
     top: 0px;
@@ -616,6 +666,8 @@ header
     box-shadow: none;
     height: 0px;
   }
+
+  
   .header-area .main-nav .nav li.submenu ul li a {
     font-size: 12px;
     font-weight: 400;
@@ -931,7 +983,7 @@ Women
 #women {
   padding-top: 90px;
   padding-bottom: 90px;
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px #eee;
 }
 
 #women .section-heading {
@@ -1051,6 +1103,7 @@ Women
 
 #women .owl-nav .owl-prev:hover {
   opacity: 1;
+  
 }
 
 #women .owl-nav .owl-next {
@@ -2226,6 +2279,8 @@ responsive
     display: none;
   }
 }
+
+
 
 @media (max-width: 992px) {
   .main-banner .right-content .right-first-image .thumb .hover-content p {

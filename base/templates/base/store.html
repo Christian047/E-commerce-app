@@ -138,9 +138,15 @@
                         <div class="thumb">
                             <div class="inner-content">
                                 <h4>We Are Hexashop</h4>
-                                <span>Home of Men's Wears and A
-                                
-                                ccessories</span>
+
+                               <!-- moving script -->
+<div class="typing-container" style="height: 30px;">
+    <span id="typed-text" style="font-weight: bold; font-family: 'Poppins', sans-serif; font-size: 27px; font-weight: 700; height: 30px;"></span>
+    <a id="cursor"></a>
+</div>
+<br>
+
+                                <!-- <span>Home of Men's Wears and Accessories</span> -->
                                 <div class="main-border-button">
                                     <a href="#">Purchase Now!</a>
                                 </div>
@@ -161,12 +167,12 @@
                                     <div class="thumb">
                                         <div class="inner-content">
                                             <h4>Contemporary</h4>
-                                            <span>Best Contemporary <br> For Men</span>
+                                            <span>Best Contemporary wears <br> For Men</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Contemporary</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <p>Make a statement. <br> Bold patterns and sleek cuts turn heads</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
@@ -174,7 +180,7 @@
                                         </div>
                                         {% comment %} <img src="{% static 'assets/images/logo.png' %}"> {% endcomment %}
 
-                                    <div style="width: 320px; height: 310px; overflow: hidden;">
+                                    <div class="hero-image">
                                             <img style="width: 100%;" src="{% static 'images/q4.jpg' %}"" alt="">
                                         </div>
                                       
@@ -185,19 +191,19 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Men</h4>
-                                            <span>Best Clothes For Men</span>
+                                            <h4>Traditional</h4>
+                                            <span>Timeless elegance</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Men</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <!-- <h4>Heritage</h4> -->
+                                                <p>Wear Wonderful pieces inspired by tradition and craftsmanship.</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                           <div style="width: 320px; height: 310px; overflow: hidden;">
+                                           <div class="hero-image">
                                             <img style="width: 100%;" src="{% static 'images/q5.jpg' %}"" alt="">
                                         </div>
                                    
@@ -208,20 +214,20 @@
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Kids</h4>
-                                            <span>Best Clothes For Kids</span>
+                                            <h4>Casual</h4>
+                                            <span>Effortless confidence </span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Kids</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>Casual</h4>
+                                                <p>Modern takes on classics that guarantee you'll look and feel your best</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                         <div style="width: 320px; height: 310px; overflow: hidden;">
-                                            <img style="width: 100%;" src="{% static 'images/q13.jpg' %}"" alt="">
+                                         <div class="hero-image">
+                                            <img src="{% static 'images/q13.jpg' %}"" alt="">
                                         </div>
                                         
                                     </div>
@@ -232,18 +238,18 @@
                                     <div class="thumb">
                                         <div class="inner-content">
                                             <h4>Accessories</h4>
-                                            <span>Best Trend Accessories</span>
+                                            <span>Get Best Trending Accessories</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Accessories</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <p> The perfect fit for the fashion-conscious man</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                          <div style="width: 320px; height: 310px; overflow: hidden;">
+                                          <div class="hero-image">
                                             <img style="width: 100%;" src="{% static 'images/q12.jpg' %}"" alt="">
                                         </div>
                                         
@@ -259,186 +265,16 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- ***** Featured Area Starts ***** -->
-<section class="section" id="men">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-heading">
-                    <h2>Featured Products</h2>
-                    <span>Discover our handpicked selection of featured products.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="men-item-carousel">
-                    <div class="owl-men-item owl-carousel">
-                        {% for product in Featured  %}
-                            <div class="item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div style="width: 360px; height: 360px; overflow: hidden;">
-                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
-                                        </div>
-                                        <div class="down-content">
-                                            <div class="row">
-                                                <div class="col"> <h4>{{ product.name }}</h4></div>
-
-                                                <div class="col text-end">  <div class="hover-content col">
-                                                <div class="icons-row">
-                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark"><i class="fa fa-eye"></i></a>
-                                                    <a href="single-product.html" class="icon-link text-dark"><i class="fa fa-star"></i></a>
-                                                    <a
-                                                        data-product="{{ product.id }}"
-                                                        data-action="add"
-                                                        class="add-btn update-cart icon-link text-dark"
-                                                    >
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </a>
-                                                </div>
-                                            </div></div>
-                                        
-                                        </div>
-                                            <span>N{{ product.price }}</span>
-                                         
-                                           
-
-<div class="row">
-                                        
-
- {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
-                        <div class="col mx-0">
-                            <span>  
-                                <a class="btn btn-outline-secondary mx-0 mb-2" href="{% url 'update_product' product.id %}">Edit</a>
-                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </span>
-                        </div>
-                    {% endif %}
-
-                            <div class="col mx-0"> <span>                     
-                            {% if request.user.is_staff %}
-                        <div class="col mx-0">
-                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
-                            </form>
-                        </div>
-                    {% endif %}
-     </span>  
-     </div>
-
-</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- ***** Men Area Ends ***** -->
-
-
-
-     <!-- ***** Latest Products Area Starts ***** -->
-    <section class="section" id="products">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Our Latest Products</h2>
-                        <span>Check out all of our products.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container">
-            <div class="row">
-
-{% for product in approved_products %}
-    <div class="col-lg-4">
-        <div class="item">
-            <div class="thumb">
-                <div class="hover-content">
-                    <ul>
-                        <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
-                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                        <li>
-                            <a
-                                data-product="{{product.id}}"
-                                data-action="add"
-                                class="add-btn update-cart"
-                            >
-                                <i class="fa fa-shopping-cart"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 360px; height: 360px; overflow: hidden;">
-                    <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
-                </div>
-            </div>
-            <div class="down-content">
-                <h4>{{ product.name }}</h4>
-                <div class="row">
-                    <div class="col mx-0">
-                        <span> N{{ product.price }}</span>
-                    </div>
-                    {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
-                        <div class="col mx-0">
-                            <span>  
-                                <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
-                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </span>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="row">
-                    {% if request.user.is_staff %}
-                        <div class="col mx-0">
-                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
-                            </form>
-                        </div>
-                    {% endif %}
-                </div>
-<!-- Display average star rating -->
-
-            </div>
-        </div>
-    </div>
-{% endfor %}
-
-
-
-                
-            </div>
-        </div>
-    </section>
-    <!-- ***** Products Area Ends ***** -->
-
 
         <!-- ***** Women Area Starts ***** -->
     <section class="section" id="women">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Discount Sales</h2>
-                        <h3 class="span"><i>10% off</i></h3>
-                        
-                    </div>
+                    <h2>Featured Products</h2>
+                    <span>Discover our handpicked selection of featured products.</span>
+                </div>
                 </div>
             </div>
         </div>
@@ -451,7 +287,9 @@
                             <div class="item">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div style="width: 360px; height: 360px; overflow: hidden;">
+
+                                        
+                                        <div style="width: auto; height: 360px; overflow: hidden;">
                                             <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
                                         </div>
                                         <div class="down-content">
@@ -460,20 +298,28 @@
 
                                                 <div class="col text-end">  <div class="hover-content col">
                                                 <div class="icons-row">
-                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark"><i class="fa fa-eye"></i></a>
-                                                    <a href="single-product.html" class="icon-link text-dark"><i class="fa fa-star"></i></a>
+                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark">
+                                                        
+                                                       <div> <small> View Product </small><i class="fa fa-eye"></i></div>
+                                                    </a>
+                                                    <a href="single-product.html" class="icon-link text-dark">
+                                                       <div><small>Save </small> <i class="fa fa-star"></i> </div>
+                                                    </a>
                                                     <a
                                                         data-product="{{ product.id }}"
                                                         data-action="add"
                                                         class="add-btn update-cart icon-link text-dark"
                                                     >
-                                                        <i class="fa fa-shopping-cart"></i>
+                                                  
+                                                    <div><small> Add to Cart </small><i class="fa fa-shopping-cart"></i></div>
+
                                                     </a>
                                                 </div>
                                             </div></div>
                                         
                                         </div>
-                                            <span>N{{ product.price }}</span>
+                                        <h4 class="mb-0"><strong>N{{ product.price }}</strong></h4>
+                                            <!-- <span>N{{ product.price }}</span> -->
                                          
                                            
 
@@ -516,7 +362,391 @@
     <!-- ***** Women Area Ends ***** -->
 
 
-  <!-- ***** Subscribe Area Starts ***** -->
+
+
+
+
+    <!-- ***** Men Area Ends ***** -->
+
+
+<!-- ***** Latest Products Area Starts ***** -->
+<section class="latest-section" id="products">
+    <div class="container">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="section-heading">
+                    <h2>Our Latest Products</h2>
+                    <span>Check out all of our products.</span>
+                    <div class="mt-3">Press to view options</div>
+                </div>
+            </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for product in approved_products %}
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                <div class="item">
+                    <div class="thumb">
+                        <div class="hover-content">
+                            <ul>
+                                <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                <li>
+                                    <a
+                                        data-product="{{product.id}}"
+                                        data-action="add"
+                                        class="add-btn update-cart"
+                                    >
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: auto; height: 220px; overflow: hidden;">
+                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>{{ product.name }}</h4>
+                        <div class="row">
+                            <div class="col mx-0">
+                                <span> N{{ product.price }}</span>
+                            </div>
+                            {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
+                                <div class="col mx-0">
+                                    <span>  
+                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            {% if request.user.is_staff %}
+                                <div class="col mx-0">
+                                    <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <!-- Display average star rating -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ***** Products Area Ends ***** -->
+
+<style>
+/* Media Query for Small Screens */
+@media (max-width: 767px) {
+   .latest-section .row > div {
+        flex: 0 0 50%; /* Display two columns on very small screens */
+        max-width: 50%;
+    }
+}
+</style>
+
+
+    
+<!-- moving section -->
+<div class="d-lg-none"> <!-- Hide on screens larger than lg -->
+    <!-- ***** Latest Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Second Latest Products</h2>
+                        <span>Check out all of our products.</span>
+
+                         <span class="mt-3 mb-0"><h6><--swipe--></h6></span>
+                    </div>
+
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for product in approved_products %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="col-lg-6 col-md-6 col-sm-12"> <!-- col-lg-6 and col-md-6 for laptops, col-sm-12 for mobile -->
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                <li>
+                                                    <a
+                                                        data-product="{{product.id}}"
+                                                        data-action="add"
+                                                        class="add-btn update-cart"
+                                                    >
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div style="width: auto; height: 360px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <div class="row">
+                                            <div class="col mx-0">
+                                                <span> N{{ product.price }}</span>
+                                            </div>
+                                            {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
+                                                <div class="col mx-0">
+                                                    <span>  
+                                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    </span>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="row">
+                                            {% if request.user.is_staff %}
+                                                <div class="col mx-0">
+                                                    <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                                                    </form>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Display average star rating -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+</div>
+
+
+
+        <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Discount Sales</h2>
+                        <h3 class="span"><i>10% off</i></h3>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                        {% for product in Featured  %}
+                            <div class="item">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        
+                                        <div style="width: auto; height: 360px; overflow: hidden;">
+                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                        </div>
+                                        <div class="down-content">
+                                            <div class="row">
+                                                <div class="col"> <h4>{{ product.name }}</h4></div>
+
+                                                <div class="col text-end">  <div class="hover-content col">
+                                                <div class="icons-row">
+                                                    <a href="{% url 'eachproduct' product.id %}" class="icon-link text-dark">
+                                                        
+                                                       <div> <small> View Product </small><i class="fa fa-eye"></i></div>
+                                                    </a>
+                                                    <a href="single-product.html" class="icon-link text-dark">
+                                                       <div><small>Save </small> <i class="fa fa-star"></i> </div>
+                                                    </a>
+                                                    <a
+                                                        data-product="{{ product.id }}"
+                                                        data-action="add"
+                                                        class="add-btn update-cart icon-link text-dark"
+                                                    >
+                                                  
+                                                    <div><small> Add to Cart </small><i class="fa fa-shopping-cart"></i></div>
+
+                                                    </a>
+                                                </div>
+                                            </div></div>
+                                        
+                                        </div>
+                                        <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
+                                            <span>N{{ product.price }}</span>
+                                         
+                                           
+
+<div class="row">
+                                        
+
+ {% if request.user.is_authenticated and request.user.customer == product.vendor %}
+                        <div class="col mx-0">
+                            <span>  
+                                <a class="btn btn-outline-secondary mx-0 mb-2" href="{% url 'update_product' product.id %}">Edit</a>
+                                <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </span>
+                        </div>
+                    {% endif %}
+
+                            <div class="col mx-0"> <span>                     
+                            {% if request.user.is_staff %}
+                        <div class="col mx-0">
+                            <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                            </form>
+                        </div>
+                    {% endif %}
+     </span>  
+     </div>
+
+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+<section class="testimonials">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto text-center">
+              
+
+                                  <div class="section-heading">
+                    
+                          <h2>Testimonials</h2>
+                    </div>
+            </div>
+        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="testimonial">
+                    <p class="testimonial-text">"I stumbled upon this ecommerce shop while looking for quality menswear online, and I'm so glad I did! The range of clothing options, from casual to formal, is impressive. Not only that, but the quality of the clothes exceeded my expectations. I've received numerous compliments on my outfits since shopping here. Plus, the customer service is top-notch, making the whole shopping experience a breeze. Highly recommend"</p>
+                    <div class="testimonial-author">
+                     <div>   <img src="{% static 'images/f.jpg' %}" alt="Testimonial Author" class="author-image"></div>
+                        <div class="author-info">
+                            <h5 class="author-name">Tunde</h5>
+                            <p class="author-role">Graphic designer,Lagos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Consistently stylish, quality clothes, and prompt service. Whether suits or casual wear, this shop delivers. Found my go-to for men's fashion"</p>
+                    <div class="testimonial-author">
+                        <img src="{% static 'images/f.jpg' %}" alt="Testimonial Author" class="author-image">
+                        <div class="author-info">
+                            <h5 class="author-name">Ade</h5>
+                            <p class="author-role">Marketing Manager,Abuja</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <section class="testimonial">
+                    <p class="testimonial-text">"I've never been one to write testimonials, but my experience with this ecommerce shop compelled me to share my thoughts. From the moment I placed my order to the time I tried on my new clothes, I was impressed. The website is easy to navigate, making it a breeze to find what I needed. The quality of the clothes is exceptional, especially considering the affordable prices. I've recommended this shop to all my friends and colleagues, and I'll continue to be a loyal customer."</p>
+                    <div class="testimonial-author">
+                        
+                        <div class="author-info">
+                            <h5 class="author-name">Chinedu</h5>
+                            <p class="author-role">Sales Representative, Port-Harcourt</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black !important;">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="color: black !important;">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+</a>
+
+
+    </div>
+</div>
+</section>
+        
+     
+
+
+
+
+
+
+
+
+
+  <div class="container py-5" style="background-color: rgb(243, 243, 243);">
+    <h4 class="text-center mb-2">Over</h4>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class=" p-4 rounded text-center mb-4">
+          <div class="number-container" data-target="1772">
+            <h1 style="font-size: 4rem;font-weight:800; font-family:Poppins, sans-serif;"  class="number">0</h1>
+          </div>
+          <h4 class="mt-3">Satisfied Customers</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+ 
     <div class="subscribe">
         <div class="container">
             <div class="row">
@@ -578,13 +808,24 @@
     <!-- ***** Subscribe Area Ends ***** -->
 
 
+
+
+
+
+
+
+
+
+
+
+
     <!-- ***** Explore Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-content">
-                        <h2>Explore Our <i>Swagful</i>  Wears and Accessories</h2>
+                        <h2 class="text-center">Explore Our <i>Swagful</i>  Wears and Accessories</h2>
                         <span>Our collection boasts a collection of classy and contemporary trends, catering to the modern man who values both tradition and innovation. From well tailored suits that exude professionalism to casual wear, we have your every fashion need covered.</span>
                         <div class="quote">
                             <i class="fa fa-quote-left"></i><p>Whether you're preparing for a boardroom meeting, a casual weekend brunch, or a special occasion, our collection offers versatile options to suit every lifestyle.</p>
@@ -629,6 +870,83 @@
     </section>
     <!-- ***** Explore Area Ends ***** -->
 
-  
+    <!-- Moving script starts -->
+  <script>
+        const typedTextSpan = document.getElementById('typed-text');
+        const cursorSpan = document.getElementById('cursor');
+
+        const textArray = ['Shop Now', 'Get Discounts', 'Mens Wears', 'Casuals','Traditional Wear', 'Mens Caps', 'Shoes','Bangles','Wristwatches',];
+        let charIndex = 0;
+        let arrayIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[arrayIndex].length) {
+                typedTextSpan.textContent += textArray[arrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100); // Adjust the typing speed by changing the setTimeout delay
+            } else {
+                cursorSpan.classList.add('active');
+                setTimeout(erase, 2000); // Pause for 2 seconds before erasing
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50); // Adjust the erasing speed by changing the setTimeout delay
+            } else {
+                cursorSpan.classList.remove('active');
+                arrayIndex++;
+                if (arrayIndex >= textArray.length) arrayIndex = 0;
+                setTimeout(type, 500); // Pause for 0.5 seconds before typing the next word
+            }
+        }
+
+        function cursorAnimation() {
+            cursorSpan.classList.toggle('active');
+        }
+
+        function init() {
+            window.setInterval(cursorAnimation, 500); // Blink cursor every 0.5 seconds
+            type();
+        }
+
+        init();
+    </script>
+
+
+
+<script>
+    const numberContainers = document.querySelectorAll('.number-container');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          const targetValue = parseInt(target.getAttribute('data-target'));
+          const numberElement = target.querySelector('.number');
+
+          let currentValue = 1;
+          const duration = 1000;
+          const increment = 5;
+
+          const rollAnimation = setInterval(() => {
+            numberElement.textContent = currentValue;
+            currentValue += increment;
+
+            if (currentValue > targetValue) {
+              clearInterval(rollAnimation); // Stop the animation when it reaches the target value
+              numberElement.textContent = targetValue;
+            }
+          }, increment);
+
+          target.classList.add('animated');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    numberContainers.forEach(container => observer.observe(container));
+  </script>
     
 {% endblock content %}  

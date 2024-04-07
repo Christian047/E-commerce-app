@@ -153,7 +153,6 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
-load_dotenv()
 
 PAYSTACK_SECRET_KEY = '#'
 PAYSTACK_PUBLIC_KEY = '#'
