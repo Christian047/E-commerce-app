@@ -91,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
     .testimonials{
+        margin: 90px 0px;
          background-color: #ffffff;
          max-height: 680px;
          /* margin: 5px 0; */
