@@ -46,18 +46,7 @@ class Payment(models.Model):
             user_wallet, created = Wallet.objects.get_or_create(user=self.user)
             user_wallet.update_balance()
 
-    # def verify_payment(self):
-    #     paystack = Paystack()
-    #     try:
-    #         status, result = paystack.verify_payment(self.ref, self.amount)
-    #         if status:
-    #             if 'amount' in result and result['amount'] / 100 == self.amount:
-    #                 self.verified = True
-    #                 self.save()
-    #                 return True
-    #     except Exception as e:
-    #         print(f"Error during payment verification: {str(e)}")
-    #     return False
+
 
     def verify_payment(self):
         paystack = PayStack()

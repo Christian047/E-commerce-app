@@ -27,8 +27,6 @@ urlpatterns = [
     path('core/',include('core.urls')),
     path('userapp/',include('userapp.urls')),
     path('usercrudapp/',include('usercrudapp.urls')),
-    # This is the path to the url,
-    # the base.api is called because it is inside the base folder(note it is '.' for subfolders)
   
 ]
 

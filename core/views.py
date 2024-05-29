@@ -8,21 +8,14 @@ from base.models import Wallet
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
+@login_required(login_url='/userapp/login/')
 def initiate_payment(request: HttpRequest) -> HttpResponse:
-    # Check if the request method is POST (form submission)
     if request.method == 'POST':
-        # Initialize the payment form with the data from the request
         payment_form = PaymentForm(request.POST)
-        # Check if the payment form is valid
         if payment_form.is_valid():
-            # Get the currently logged-in user
             user = request.user
-            # Save the payment form data without committing to the database yet
             payment = payment_form.save(commit=False)
-            # Associate the payment with the logged-in user
             payment.user = user
-            # Save the payment to the database
             payment.save()
             payment.walletsave()
             

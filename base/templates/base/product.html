@@ -38,7 +38,9 @@
             <div class="col-lg-4">
                 <div class="right-content">
                     <h4>{{ product.name }}</h4>
-                    <span class="price">N{{ product.price }}</span>
+
+                    <p> <h1 class="price fw-bold">N{{ product.price }}</h1></p>
+                   
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -52,34 +54,19 @@
                     <span> <i>  This Product has no description </i></span>
                     {% endif %}
                     
-                   
-                    <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>Vendor:</h6>
-                        </div>
+  
 
-                      <!-- Vendor name  -->
-                        <div class="right-content">
-    {% if product.vendor %}
-        <h6><a href="{% url 'vendor_products' vendor_id=product.vendor.id %}">{{ product.vendor.username }}</a></h6>
-</div>
+<div class="row mt-3">
 
-                        {% else %}
-                        <h6>No Vendor</h6>
-                        {% endif %}
-                        </div>
-                    </div>
-
-<div class="row">
-
-<div class="col" >
+<div class="col my-3" >
+    <h6 class="my-2"><i class="fa-solid fa-thumbs-up"></i>    {{ total_likes  }} likes</h6>
 <form action="{% url 'like_post' product.pk %}" method="POST">
     {% csrf_token %}
 
     {% if user.is_authenticated %}
         {% if liked %}
             <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-danger btn-sm">Unlike</button>
-            {{ total_likes }} Likes
+        
         {% else %}
             <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-primary btn-sm">Like</button>
         {% endif %}
@@ -87,17 +74,17 @@
         <div><a href="{% url 'login' %}">Login</a> to like</div>
     {% endif %}
 
-   <h6 class="my-2"> {{ total_likes }} likes</h6>
+
 </form>
 </div>
-                     
+         
 
                         <div 
                                     data-product="{{ product.id }}"
                                     data-action="add"
                                     class="btn btn-outline-secondary add-btn update-cart main-border-button"
                                     data-url="{% url 'update_user_order' %}"
-                                >
+                                ><i class="fa fa-shopping-cart"></i>
                                     Add to Cart
                                 </div>
                     </div>
@@ -110,8 +97,8 @@
 
 
         
-<div class="text-center mt-3">  <h3 class="fw-bold"> Reviews</h3></div>
-<p><h5 class="text-center">This product has <strong>{{number_of_reviews }}</strong> Reviews</h5> </p>
+<div class="text-center mt-3">  <h4 class="fw-semibold"> Reviews</h4></div>
+<p><h6 class="text-center">This product has <strong>{{number_of_reviews }}</strong> Reviews</h6> </p>
 
 {% if product_reviews %}
     <div class="row text-center m-2">
@@ -185,13 +172,14 @@
             <!-- ... -->
 
             <!-- Add Review Link -->
-          <nav aria-label="breadcrumb mt-3">
-                <ol class="breadcrumb">
+            <nav aria-label="breadcrumb mt-3">
+                <ol class="breadcrumb justify-content-center">
                     <a href="{% url 'add_review' product_id=product.id %}">
                         <li class="breadcrumb-item active" aria-current="page">Add Review</li>
                     </a>
                 </ol>
             </nav>
+            
         </section></p>
     
     

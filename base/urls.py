@@ -8,9 +8,6 @@ urlpatterns = [
     path('', views.store, name='home'),
     path('room/<str:pk>/', views.room, name='room'),
     path('profile/<str:pk>/', views.userProfile, name='user-profile'),
-    # path('login/', views.loginPage, name='login'),
-    # path('logout/', views.logoutUser, name='logout'),
-    # path('register/', views.RegisterUser.as_view(), name='register'),
     path('like/<int:pk>', views.LikeView, name='like_post'),
     path('incomecreate/', views.IncomeCreateView.as_view(), name='incomecreate'),
     path('update_user_order/', views.update_user_order, name='update_user_order'),
@@ -28,9 +25,6 @@ urlpatterns = [
     path('topics/', views.topicsPage, name='topics'),
     path('delete-room/<str:pk>', views.deleteRoom, name='delete-room'),
     path('delete-message/<str:pk>', views.deleteMessage, name='delete-message'),
-    
-    # remember to pass a pk value if it will have a specific linkage
-    
     path('update-room/<str:pk>/', views.updateRoom, name='update-room') ,
     path('update-user/', views.updateUser, name='update-user'),
     
@@ -38,8 +32,6 @@ urlpatterns = [
     
     path('Category_create/', views.Category_create, name='category_create'),
     path('cat/<slug:category_slug>', views.Category_list.as_view(), name='category'),
-    
-    #Leave as empty string for base url
 	path('', views.store, name="store"),
 	path('Vendor_dashboard/', views.Vendor_dashboard, name="Vendor_dashboard"),
 	path('cart/', views.cart, name="cart"),
@@ -52,8 +44,6 @@ urlpatterns = [
 	path('process_order/', views.processOrder, name="process_order"),
 	path('eachproduct/<str:pk>/', views.Eachproduct, name="eachproduct"),
     path('vendor/<int:vendor_id>/', views.vendor_products, name='vendor_products'),
- 
- 
     path('create_product/', views.create_product, name="create_product"),
     path('update_product/<str:pk>/', views.update_product, name='update_product') ,
     path('delete_product/<str:pk>/', views.delete_product, name='delete_product') ,

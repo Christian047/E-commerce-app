@@ -57,10 +57,42 @@
       z-index: -1; }
 
 
+      .whatsapp_float {
+        position: fixed;
+        width: 70px; /* Increased width */
+        height: 70px; /* Increased height */
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 40px; /* Increased font size */
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+      }
+      .whatsapp-icon {
+        margin-top: 15px; /* Adjusted margin-top */
+      }
+      
+      /* for mobile */
+      @media screen and (max-width: 767px) {
+        .whatsapp-icon {
+          margin-top: 5px; /* Adjusted margin-top for mobile */
+        }
+        .whatsapp_float {
+          width: 50px; /* Adjusted width for mobile */
+          height: 50px; /* Adjusted height for mobile */
+          bottom: 30px;
+          right: 10px;
+          font-size: 30px; /* Adjusted font size for mobile */
+        }
+      }
+      
 
 
 
-
+      
 .testimonial-section {
   padding: 3rem 0 7rem 0; }
 

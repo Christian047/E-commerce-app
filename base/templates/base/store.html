@@ -54,7 +54,7 @@
 
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-wallet fa-xl"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-business-time fa-xl"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
@@ -274,7 +274,7 @@
                 <div class="col-lg-12">
                     <div class="section-heading">
                     <h2>Featured Products</h2>
-                    <span>Discover our handpicked selection of featured products.</span>
+                    Swipe <i class="fa-solid fa-hand-point-right"></i>
                 </div>
                 </div>
             </div>
@@ -376,8 +376,6 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="section-heading">
                     <h2>Our Latest Products</h2>
-                    <span>Check out all of our products.</span>
-                    <div class="mt-3">Press to view options</div>
                 </div>
             </div>
         <div class="row">
@@ -414,7 +412,8 @@
                         <h4>{{ product.name }}</h4>
                         <div class="row">
                             <div class="col mx-0">
-                                <span> N{{ product.price }}</span>
+                                <p><h3 class="fw-bolder"> N{{ product.price }}</h3></p>
+                                
                             </div>
                             {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
                                 <div class="col mx-0">
@@ -440,6 +439,7 @@
                 </div>
             </div>
             {% endfor %}
+            <div class="text-center"><span><a href="" >See More</a></span></div>
         </div>
     </div>
 </section>
@@ -456,100 +456,98 @@
 </style>
 
 
+  <section><!-- moving section -->
+    <div class="d-lg-none"> <!-- Hide on screens larger than lg -->
+        <!-- ***** Latest Products Area Starts ***** -->
+        <section class="section" id="products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>New Arrivals</h2>
+                        
+                        </div>
     
-<!-- moving section -->
-<div class="d-lg-none"> <!-- Hide on screens larger than lg -->
-    <!-- ***** Latest Products Area Starts ***** -->
-    <section class="section" id="products">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Our Second Latest Products</h2>
-                        <span>Check out all of our products.</span>
-
-                         <span class="mt-3 mb-0"><h6><--swipe--></h6></span>
+                       
                     </div>
-
-                   
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div id="productCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        {% for product in approved_products %}
-                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <div class="col-lg-6 col-md-6 col-sm-12"> <!-- col-lg-6 and col-md-6 for laptops, col-sm-12 for mobile -->
-                                <div class="item">
-                                    <div class="thumb">
-                                        <div class="hover-content">
-                                            <ul>
-                                                <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
-                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                                <li>
-                                                    <a
-                                                        data-product="{{product.id}}"
-                                                        data-action="add"
-                                                        class="add-btn update-cart"
-                                                    >
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div style="width: auto; height: 360px; overflow: hidden;">
-                                            <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="down-content">
-                                        <h4>{{ product.name }}</h4>
-                                        <div class="row">
-                                            <div class="col mx-0">
-                                                <span> N{{ product.price }}</span>
+    
+            <div class="container">
+                <div class="row">
+                    <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for product in approved_products %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <!-- col-lg-6 and col-md-6 for laptops, col-sm-12 for mobile -->
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <div class="hover-content">
+                                                <ul>
+                                                    <li><a href="{% url 'eachproduct' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                    <li>
+                                                        <a
+                                                            data-product="{{product.id}}"
+                                                            data-action="add"
+                                                            class="add-btn update-cart"
+                                                        >
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
-                                                <div class="col mx-0">
-                                                    <span>  
-                                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
-                                                        <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
-                                                    </span>
-                                                </div>
-                                            {% endif %}
+                                            <div style="width: auto; height: 360px; overflow: hidden;">
+                                                <img style="width: 100%;" src="{{ product.imageURL }}" alt="">
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            {% if request.user.is_staff %}
+                                        <div class="down-content">
+                                            <h4>{{ product.name }}</h4>
+                                            <div class="row">
                                                 <div class="col mx-0">
-                                                    <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
-                                                        {% csrf_token %}
-                                                        <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
-                                                    </form>
+                                                    <span> N{{ product.price }}</span>
                                                 </div>
-                                            {% endif %}
+                                                {% if request.user.is_authenticated and request.user.customer == product.vendor or request.user.is_staff %}
+                                                    <div class="col mx-0">
+                                                        <span>  
+                                                            <a class="btn btn-outline-secondary mx-0" href="{% url 'update_product' product.id %}">Edit</a>
+                                                            <a class="btn btn-outline-secondary mx-0" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                        </span>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="row">
+                                                {% if request.user.is_staff %}
+                                                    <div class="col mx-0">
+                                                        <form method="post" action="{% url 'unapprove_product' pk=product.id %}">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-outline-secondary mt-1">Unapprove</button>
+                                                        </form>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <!-- Display average star rating -->
                                         </div>
-                                        <!-- Display average star rating -->
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+                        <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ***** Products Area Ends ***** -->
-</div>
+        </section>
+        <!-- ***** Products Area Ends ***** -->
+    </div></section>  
+
 
 
 
@@ -570,7 +568,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="men-item-carousel">
-                    <div class="owl-men-item owl-carousel">
+                    <div class="owl-men-item owl-carousel" data-nav="true">
                         {% for product in Featured  %}
                             <div class="item">
                                 <div class="card">
@@ -602,12 +600,13 @@
                                                     <div><small> Add to Cart </small><i class="fa fa-shopping-cart"></i></div>
 
                                                     </a>
+                                                    <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
                                                 </div>
                                             </div></div>
                                         
                                         </div>
-                                        <h4 class="text-end mb-0"><strong>N{{ product.price }}</strong></h4>
-                                            <span>N{{ product.price }}</span>
+                                       
+                                
                                          
                                            
 
@@ -743,6 +742,36 @@
             <h1 style="font-size: 4rem;font-weight:800; font-family:Poppins, sans-serif;"  class="number">0</h1>
           </div>
           <h4 class="mt-3">Satisfied Customers</h4>
+
+        
+          
+        </div>
+
+        <div class="row text-center">
+        <h2 class="my-3 text-center fw-bold">Partners</h2>
+<p></p>
+<p></p>
+<p></p>
+<br><div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3 mb-3">
+                <img style="width: auto; height: 40px;" src="{% static 'images/jaa.png' %}" alt="">
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <img style="width: auto; height: 40px;" src="{% static 'images/jaac.png' %}" alt="">
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <img style="width: auto; height: 40px;" src="{% static 'images/jaay.png' %}" alt="">
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <img style="width: auto; height: 40px;" src="{% static 'images/jaaz.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
         </div>
       </div>
     </div>
@@ -853,10 +882,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="first-image">
-                                    <img src="{% static 'assets/images/explore-image-01.jpg' %}" alt="">
+                                <div class="leather">
+                                    <h4>Men's Accessories</h4>
+                                    <span>Latest Collection</span>
                                 </div>
                             </div>
+
                             <div class="col-lg-6">
                                 <div class="second-image">
                                     <img src="{% static 'images/q12.jpg' %}" alt="">
@@ -865,7 +896,7 @@
                             <div class="col-lg-6">
                                 <div class="types">
                                     <h4>Over 304 Products</h4>
-                                    <span>Producing on daily basis</span>
+                                    <span>Sold on daily basis</span>
                                 </div>
                             </div>
                         </div>

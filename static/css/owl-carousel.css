@@ -97,6 +97,15 @@
 .no-js .owl-carousel {
   display: block; }
 
+
+  .owl-carousel .owl-stage {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(255, 255, 255, 0.5); /* For Firefox */
+  }
+
 /*
  *  Owl Carousel - Animate Plugin
  */

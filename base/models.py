@@ -62,7 +62,6 @@ class Expenses(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True, max_length=300)
-    # slug = models.SlugField(unique=True, blank=True, max_length=300, default='sky')
 
     def save(self, *args,**kwargs):
         if not self.slug:

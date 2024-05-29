@@ -7,10 +7,7 @@ from django.db.models import Avg
 from django.db.models import Q
 # Login required Used to restrict users from certain pages
 from django.contrib.auth.decorators import login_required
-# Django messages for various template messages
-# Bootstrap 6
 from django.contrib import messages
-# User is imported from the models to match the user input
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -62,6 +59,7 @@ def store(request):
     Product_categories = Category.objects.all()
     approved_products = Product.objects.filter(status='approved')
     approved_products = Product.objects.filter(status='approved').exclude(category__name='Featured post')
+
     try:
         Featured = Product.objects.filter(category__name='Featured post', status='approved')
 
@@ -71,23 +69,14 @@ def store(request):
     if request.user.is_authenticated:
         user_wallet, created = Wallet.objects.get_or_create(user=request.user)
     else:
-        # Wallet does not exist, handle it accordingly (e.g., create one)
         user_wallet = None
 
     if request.user.is_authenticated:
         try:
-            # total_amount = user_wallet.balance
-            # total_amount = Payment.total_payments.get(user=request.user)
             total_amount = Payment.objects.filter(user=request.user).aggregate(Sum('amount'))['amount__sum'] or 0
         except Exception as e:
-            # Handle the exception (you can print it for debugging purposes)
             print(f"An error occurred: {e}")
-        
-        # product page filter
-        
-
-
-            
+          
         pending_post = Product.objects.filter(status='pending')
         
         
@@ -100,11 +89,7 @@ def store(request):
             userproducts = Post.objects.filter(author=request.user, status='approved')
         except: userproducts = None
         
-        
-    
-        
-        
-        # Keep the rest of the code as it is
+
         income_list = Wallet.objects.filter(user=request.user)
         expenses_list = Expenses.objects.filter(user=request.user)
         sum_total_income = income_list.aggregate(sum_total_income=Sum('balance'))['sum_total_income'] or 0
@@ -133,82 +118,37 @@ def store(request):
     return render(request, 'base/store.html', context)
 
 
-@login_required
-def add_favorite(request, product_id):
-    # Retrieve the product using its ID or return a 404 page if not found
-    product = get_object_or_404(Product, id=product_id)
-    
-    # Check if the user has already favorited the product
-    if product.favorite.filter(id=request.user.id).exists():
-        # If yes, remove the user from the product's favorites
-        product.favorite.remove(request.user)
-        favorite = False
-    else:
-        # If no, add the user to the product's favorites
-        product.favorite.add(request.user)
-        favorite = True
-    
-    # Redirect the user back to the product detail page after adding/removing from favorites
-    return redirect('product_detail', product_id=product_id)
-
-@login_required
-def favorite_list(request):
-    # Retrieve all favorite objects for the current user
-    favorites = Favorite.objects.filter(user=request.user)
-    
-    # Render the favorite list template with the retrieved favorites
-    return render(request, 'favorites/favorite_list.html', {'favorites': favorites})
-
 
 
 @login_required(login_url='login')
 def Category_create(request):
-    # Check if the request method is POST
     if request.method == 'POST':
-        # Create the category form with the submitted data
         form = CategoryForm(request.POST, request.FILES)
-
-        # Check if the form is valid
         if form.is_valid():
-            # Save the form data to create a new category
             category = form.save()
-
             return redirect('store')
     else:
-        # If the request method is not POST, create an empty form
         form = CategoryForm()
-
     context = {'form': form}
     return render(request, 'category/category_form.html', context)
 
-# Define the Category_list class, derived from DetailView
+
+
+
 class Category_list(DetailView):
-
-    # Define the GET method to handle HTTP GET requests
     def get(self, request, category_slug):
-        # Extract the category_slug from the URL
-
-        # Fetch the Category object using the provided category_slug
         Product_categories = Category.objects.all()
         catlist = Category.objects.get(slug=category_slug)
-
-        # Retrieve all posts related to the category with the status set to 'approved'
         category_by_post = Product.objects.filter(category=catlist, status='approved')
-
-        # Create a context dictionary to store data to be passed to the template
         contexta = {
-            'list': catlist,               # Store the Category object
-            'Product_categories': Product_categories,               # Store the Category object
-            'category_by_post': category_by_post,  # Store the related posts
+            'list': catlist,              
+            'Product_categories': Product_categories,               
+            'category_by_post': category_by_post, 
         }
 
-        # Render the 'category/cat_list.html' template with the provided context
         return render(request, 'category/cat_list.html', context=contexta)
 
-    # Define the POST method to handle HTTP POST requests
     def post(self, request):
-        # This method is currently empty and renders the same template.
-        # You might handle form submissions and processing logic here in the future.
         return render(request, 'category/cat_list.html')
 
 
@@ -222,16 +162,10 @@ def LikeView(request, pk):
     else:
         product.likes.add(request.user)
         liked = True
-
-    # Print the form data for debugging
     print(request.POST)
 
 
     return HttpResponseRedirect(reverse('eachproduct', args=[str(pk)]))
-
-
-
-
 
 
 
@@ -271,12 +205,10 @@ class IncomeCreateView(View):
         return render(request,'incomexp/income_create.html')
 
     def post(self, request):
-        # Extract data from the request
         description = request.POST.get('description')
         amount = request.POST.get('amount')
         incometype_id = request.POST.get('incometype')
 
-        # Create a new income entry
         Wallet.objects.create(
             user=request.user,
             balance=amount,
@@ -287,7 +219,6 @@ class IncomeCreateView(View):
 @login_required(login_url= 'login')
 def add_review(request, product_id):
     page = 'add_review'
-    # Assuming you pass the product_id in the URL, adjust this part accordingly
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
@@ -307,7 +238,6 @@ def add_review(request, product_id):
 
 @login_required(login_url= 'login')
 def add_vendor_review(request,vendor_id):
-    # Assuming you pass the product_id in the URL, adjust this part accordingly
     vendor = get_object_or_404(Customer, pk=vendor_id)
     
 
@@ -316,7 +246,7 @@ def add_vendor_review(request,vendor_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.vendor = vendor
-            review.customer = request.user.customer  # Assuming you have a one-to-one relationship between User and Customer
+            review.customer = request.user.customer  
             review.save()
             return redirect('vendor_products', vendor_id=vendor_id)
 
@@ -330,25 +260,15 @@ def add_vendor_review(request,vendor_id):
 
 @login_required(login_url='login')
 def update_review(request,pk):
-    # Get the product instance by ID
     review = get_object_or_404(Review, pk=pk)
-
-    # Check if the request method is POST
     if request.method == 'POST':
-        # Create the product form with the submitted data and instance
         form = ReviewForm(request.POST, request.FILES, instance=review)
-
-        # Check if the form is valid
         if form.is_valid():
-            # Save the updated product to the database
             form.save()
-
-            # Redirect to a different page (you can choose where to redirect)
             return redirect('eachproduct', pk=review.product.pk)
 
 
     else:
-        # If the request method is not POST, create a form with the current product instance
         form = ReviewForm(instance=review)
 
     context = {'form': form, 'review': review}
@@ -356,18 +276,15 @@ def update_review(request,pk):
 
 @login_required(login_url= 'login')
 def delete_review(request,pk):
-    
-    # query the database to get the unique room and pass to variable
+
     review = get_object_or_404(Review, pk=pk)
     if request.method == 'POST':
-        # use delete method and return to homepage
         review.delete()
         messages.success(request, 'review deleted')
         if request.user.customer.is_vendor:
             return redirect('Vendor_dashboard')
         else:
             return redirect('store')
-    # return the template and pass in direct context
     return render(request, 'base/delete.html', {'obj' : review})
 
 
@@ -385,6 +302,9 @@ def Vendor_dashboard(request):
 
 
 
+
+
+@login_required(login_url= 'login')
 def cart(request):
 	data = cartData(request)
 
@@ -1009,7 +929,7 @@ class Pendingpage(LoginRequiredMixin, View):
 
 
 
-class UnapproveProduct(LoginRequiredMixin, View):
+class UnapproveProduct(LoginRequiredMixin, View): 
     login_url = 'login'
 
     def post(self, request, pk):
