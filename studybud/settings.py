@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import django-heroku
+import dj_database_url
+from decouple import config
+
 
 from dotenv import load_dotenv
 
@@ -141,6 +145,9 @@ STATICFILES_DIRS = [
     # ensure no space inbetween directory name assignment
     BASE_DIR /'static']
 
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # tHIS IS THE STORAGE BASE FOR USER UPLOADED IMAGES
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -157,3 +164,6 @@ load_dotenv()
 
 PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
 PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
+
+
+-django.heroku.settings(locals())
