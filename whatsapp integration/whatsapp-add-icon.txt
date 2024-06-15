@@ -3,7 +3,8 @@ Step 1: Include the following font-awesome CSS :
 
 
 Step 2: Add following HTML code:
-<a href="https:/wa.me/country_code_and_your_phone_number"  target="_blank" class="whatsapp_float"><i class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
+
+<a href="https://wa.me/2348027989868"  target="_blank" class="whatsapp_float"><i class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
 
 Note: please make sure to add the whatsapp font icon class from https://fontawesome.com/
 
